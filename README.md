@@ -59,3 +59,43 @@ Once the application terminal workspace initializes, select a numeric choice opt
     
 4.  Resilience & Fault Tolerance (Part d)
 The application architecture wraps file transactions and user entries inside protective try-except blocks. If file dependencies are completely missing, or if an invalid menu item entry is selected, the application prints a clear warning alert and cycles back to the main option screen cleanly without crashing out.
+
+
+Question 4
+------------
+a.  Project Structure & Reproducibility Guide (Question 4.a)
+
+### Directory Map
+Exam/
+│
+├── encryp_student_records.py   
+├── apply_rules.sh            
+├── filter_tests.md        
+├── README.md                   
+└── .gitignore                  
+
+### How to Run the Program and Reproduce Tests
+
+#### 1. Running the Core Application (Question 2)
+To run the Python encryption, decryption, and SHA-256 baseline integrity monitor application, execute the script natively via your terminal environment:
+"powershell"
+& "$env:USERPROFILE\AppData\Local\Programs\Python\Python311\python.exe" encryp_student_records.py
+
+* Use **Option 1** to initialize the baseline dataset file (`student_records.txt`), write out a tracking snapshot signature (`baseline_hash.txt`), and generate an encrypted storage payload (`student_records.enc`).
+* Use **Option 2** to reverse the cipher blocks, confirm payload authenticity, and output a decrypted confirmation file (`student_records_decrypted.txt`).
+* Use **Option 3** to verify matching state values against current modifications.
+* Use **Option 4** to inject unauthorized text strings into the record database to test and reproduce the **SHA-256 Integrity Failure Warning Alert**.
+
+#### 2. Reproducing Network Traffic Filtering Tests (Question 3)
+To reproduce the simulated network routing and verify that traffic restrictions match the parameters configured in `apply_rules.sh`:
+1. Start an interface-wide listener on port 443 in an administrative terminal instance:
+   cmd#  %USERPROFILE%\AppData\Local\Programs\Python\Python311\python.exe -m http.server 443 --bind 0.0.0.0
+   
+2. Test the **Permitted Staff connection** pathway by running this tracking request from a secondary command terminal window:
+   cmd# curl http://192.168.152.1:443 --connect-timeout 5
+   
+   *(Confirm that the terminal returns a clean directory HTTP index stream listing row to verify reproducibility)*.
+3. Test the **Blocked Network boundaries** by executing standard calls across alternate interfaces:
+   cmd# curl http://192.168.1.174:443 --connect-timeout 5
+   *(Confirm that the terminal pauses, hits a hard barrier drop condition, and returns a dynamic timeout status string error)*.
+
