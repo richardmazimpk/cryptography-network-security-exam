@@ -1,0 +1,6 @@
+# Exclude sensitive cryptographic key tokens securely (Question 2 Best Practice)
+secret.key
+
+# Exclude operational testing source data files
+student_records.txt
+student_records_decrypted.txt
